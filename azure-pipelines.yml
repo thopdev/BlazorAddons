@@ -14,7 +14,7 @@ steps:
     npm install -g vsce
   displayName: 'npm install and vsce'
 - script: |
-    npm version 0.0.$(Build.BuildId)
+    npm version 0.0.$(Build.BuildId) --no-git-tag-version
 - script: |
     vsce package
   displayName: 'Compiling to js'
