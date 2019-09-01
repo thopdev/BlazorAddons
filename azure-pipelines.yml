@@ -22,6 +22,10 @@ steps:
 - script: |
     vsce package
   displayName: 'Compiling to js'
+- task: CopyFiles@2
+  inputs:
+    Contents: '*.vsix'
+    TargetFolder: 'publish'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/*.vsix'
