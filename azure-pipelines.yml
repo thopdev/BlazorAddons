@@ -14,9 +14,19 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
 - script: |
     npm install
     npm install -g vsce
   displayName: 'npm install and vsce'
-  
+- script: |
+    npm run compile
+    displayName: 'Compiling to js'
+- script: |
+    npm run test
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)/out'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
