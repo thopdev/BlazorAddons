@@ -2,7 +2,7 @@
 	"name": "blazorcomponents",
 	"displayName": "BlazorComponents",
 	"description": "Create seperate components",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "tHop",
 	"engines": {
 		"vscode": "^1.37.0"
@@ -22,13 +22,14 @@
 			}
 		],
 		"menus": {
-			"explorer/context":
-			[{
-				"command": "blazorcomponents.createComponent",
-				"group": "navigation"
-			}]
+			"explorer/context": [
+				{
+					"command": "blazorcomponents.createComponent",
+					"group": "navigation"
+				}
+			]
 		}
-	},	
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
