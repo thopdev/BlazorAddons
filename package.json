@@ -4,6 +4,8 @@
 	"description": "Create seperate components",
 	"version": "0.0.5",
 	"publisher": "tHop",
+	"type": "git",
+	"repository": "https://dev.azure.com/thomashhopp/_git/BlazorComponents",
 	"engines": {
 		"vscode": "^1.37.0"
 	},
