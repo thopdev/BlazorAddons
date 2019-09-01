@@ -20,17 +20,10 @@ steps:
     npm install -g vsce
   displayName: 'npm install and vsce'
 - script: |
-    npm run compile
+    vsce package
   displayName: 'Compiling to js'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'out'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/*.vsix'
     ArtifactName: 'extension'
     publishLocation: 'Container'
