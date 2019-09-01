@@ -25,7 +25,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '*.vsix'
-    TargetFolder: 'publish'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/publish'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/publish'
