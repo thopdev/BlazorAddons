@@ -21,9 +21,6 @@ steps:
 - script: |
     npm run compile
   displayName: 'Compiling to js'
-- script: |
-    npm run test
-  displayName: 'Test'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)/out'
