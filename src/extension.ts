@@ -26,8 +26,14 @@ export function activate(context: vscode.ExtensionContext) {
 			dirpath = path.dirname(dirpath);
 		}
 
-		var namespace = vscode.workspace.asRelativePath(dirpath, false).split("/").join(".");
+		var relativePath = vscode.workspace.asRelativePath(dirpath, true);
+		var namespace:string = relativePath.split("/").join(".");
 
+		if (relativePath === vscode.workspace.rootPath){
+			namespace = namespace.split(".").splice(-1)[0];
+		}
+		
+		
 
 		var componentName = await vscode.window.showInputBox({placeHolder: "Component", ignoreFocusOut: true, prompt: "Please enter a component name"});
 		
