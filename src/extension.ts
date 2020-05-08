@@ -13,7 +13,11 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       var relativePath = vscode.workspace.asRelativePath(dirpath, true);
-      var namespace: string = relativePath.split("\\").join(".");
+      var namespace: string = relativePath
+        .split("\\")
+        .join(".")
+        .split("/")
+        .join(".");
 
       if (relativePath === vscode.workspace.rootPath) {
         namespace = namespace.split(".").splice(-1)[0];
