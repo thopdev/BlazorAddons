@@ -1,1 +1,1 @@
-@inherents %ComponentName%ComponentBase
+<div>Component: %ComponentName% has been succesfully created.</div>

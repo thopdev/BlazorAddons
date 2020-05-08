@@ -2,7 +2,7 @@
 	"name": "blazorcomponents",
 	"displayName": "BlazorComponents",
 	"description": "Create seperate components",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"publisher": "tHop",
 	"type": "git",
 	"repository": "https://dev.azure.com/thomashhopp/_git/BlazorComponents",
@@ -17,19 +17,15 @@
 		"onCommand:blazorcomponents.createComponent"
 	],
 	"contributes": {
-		"commands": [
-			{
-				"command": "blazorcomponents.createComponent",
-				"title": "New Blazor component"
-			}
-		],
+		"commands": [{
+			"command": "blazorcomponents.createComponent",
+			"title": "New Blazor component"
+		}],
 		"menus": {
-			"explorer/context": [
-				{
-					"command": "blazorcomponents.createComponent",
-					"group": "navigation"
-				}
-			]
+			"explorer/context": [{
+				"command": "blazorcomponents.createComponent",
+				"group": "navigation"
+			}]
 		}
 	},
 	"scripts": {

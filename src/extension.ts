@@ -20,53 +20,51 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let disposable = vscode.commands.registerCommand('blazorcomponents.createComponent', async (event) => {
 
-		
+
 		var dirpath: string = event.fsPath;
-		if (fs.lstatSync(dirpath).isFile()){
+		if (fs.lstatSync(dirpath).isFile()) {
 			dirpath = path.dirname(dirpath);
 		}
 
 		var relativePath = vscode.workspace.asRelativePath(dirpath, true);
-		var namespace:string = relativePath.split("/").join(".");
+		var namespace: string = relativePath.split("/").join(".");
 
-		if (relativePath === vscode.workspace.rootPath){
+		if (relativePath === vscode.workspace.rootPath) {
 			namespace = namespace.split(".").splice(-1)[0];
 		}
-		
-		
 
-		var componentName = await vscode.window.showInputBox({placeHolder: "Component", ignoreFocusOut: true, prompt: "Please enter a component name"});
-		
-		if (componentName === undefined){
+
+
+		var componentName = await vscode.window.showInputBox({ placeHolder: "Component", ignoreFocusOut: true, prompt: "Please enter a component name" });
+
+		if (componentName === undefined) {
 			return;
 		}
 
 		componentName = componentName.charAt(0).toUpperCase() + componentName.substring(1);
 
-		fs.mkdirSync(dirpath + "\\" + componentName);
-		
 		try {
-		vscode.workspace.openTextDocument(context.extensionPath + '/templates/' + "ComponentBase").then((doc: vscode.TextDocument) => {
-			var text = doc.getText();
-			text = text.replace('%ClassName%', componentName + "");
-			text = text.replace('%Namespace%', namespace + "." + componentName );
-			fs.writeFileSync(dirpath + "\\" + componentName + "\\" + componentName + ".cs",  text);
-		});
+			vscode.workspace.openTextDocument(context.extensionPath + '/templates/' + "ComponentBase").then((doc: vscode.TextDocument) => {
+				var text = doc.getText();
+				text = text.replace('%ClassName%', componentName);
+				text = text.replace('%Namespace%', namespace);
+				fs.writeFileSync(dirpath + "\\" + componentName + ".razor.cs", text);
+			});
 
-		vscode.workspace.openTextDocument(context.extensionPath + '/templates/' + "Component").then((doc: vscode.TextDocument) => {
-			var text = doc.getText();
-			text = text.replace('%ComponentName%', componentName + "");
-			fs.writeFileSync(dirpath + "\\" + componentName + "\\" + componentName + ".razor",  text);
-		});
+			vscode.workspace.openTextDocument(context.extensionPath + '/templates/' + "Component").then((doc: vscode.TextDocument) => {
+				var text = doc.getText();
+				text = text.replace('%ComponentName%', componentName + "");
+				fs.writeFileSync(dirpath + "\\" + componentName + ".razor", text);
+			});
 
 
-	} catch (e){
-		console.log(e);
-	}
+		} catch (e) {
+			console.log(e);
+		}
 	});
 
 	context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }

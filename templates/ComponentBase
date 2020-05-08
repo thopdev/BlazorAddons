@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace %Namespace%
 {
-    public abstract class %ClassName%ComponentBase : ComponentBase
+    public partial class %ClassName%Component
     {
 
     }
