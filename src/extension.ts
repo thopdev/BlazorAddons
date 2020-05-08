@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       var relativePath = vscode.workspace.asRelativePath(dirpath, true);
-      var namespace: string = relativePath.split("/").join(".");
+      var namespace: string = relativePath.split("\\").join(".");
 
       if (relativePath === vscode.workspace.rootPath) {
         namespace = namespace.split(".").splice(-1)[0];
@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   async function GetTemplateFileAsync(templateName: string, args: any) {
     var template = await vscode.workspace.openTextDocument(
-      context.extensionPath + "/tempaltes/" + templateName
+      context.extensionPath + "/templates/" + templateName
     );
     var templateText = template.getText();
     return StringReplacer(templateText, args);
@@ -62,7 +62,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   function StringReplacer(str: string, args: any): string {
     for (var key in args) {
-      str.replace(`%${key}%`, args[key]);
+      var value = args[key];
+      var templateKey = "%" + key + "%";
+      var str = str.replace(templateKey, value);
     }
 
     return str;
