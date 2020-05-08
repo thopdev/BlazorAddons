@@ -17,15 +17,19 @@
 		"onCommand:blazorcomponents.createComponent"
 	],
 	"contributes": {
-		"commands": [{
-			"command": "blazorcomponents.createComponent",
-			"title": "New Blazor component"
-		}],
-		"menus": {
-			"explorer/context": [{
+		"commands": [
+			{
 				"command": "blazorcomponents.createComponent",
-				"group": "navigation"
-			}]
+				"title": "New Blazor component"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "blazorcomponents.createComponent",
+					"group": "navigation"
+				}
+			]
 		}
 	},
 	"scripts": {
@@ -41,9 +45,9 @@
 		"@types/node": "^10.12.21",
 		"@types/vscode": "^1.37.0",
 		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
+		"mocha": "^7.1.2",
+		"tslint": "^5.20.1",
 		"typescript": "^3.3.1",
-		"tslint": "^5.12.1",
 		"vscode-test": "^1.0.2"
 	}
 }
