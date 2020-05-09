@@ -2,7 +2,7 @@
 	"name": "blazorcomponents",
 	"displayName": "BlazorComponents",
 	"description": "Create seperate components",
-	"version": "0.0.6",
+	"version": "0.1.0",
 	"publisher": "tHop",
 	"type": "git",
 	"repository": "https://dev.azure.com/thomashhopp/_git/BlazorComponents",
