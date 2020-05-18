@@ -13,7 +13,8 @@ Their are currently no known bugs. If you encounter any bugs please submit a iss
 
 ## Planned features
 Currenlty their are no new planned features. If you have any ideas for new features please create a issue. 
+
 [Request new feature](https://github.com/hopstar/BlazorAddons/issues/new?assignees=&labels=&template=feature_request.md&title=)
 
 ## Contributers
-https://github.com/hopstar
+- [Hopstar](https://github.com/hopstar)
