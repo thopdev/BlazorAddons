@@ -17,5 +17,6 @@ jobs:
       run: npm install
     - name: Npm Build
       run: npm build
-    - name: Npm test
-      run: npm test  
+#     Disabled until test are added 
+#     - name: Npm test
+#       run: npm test  
