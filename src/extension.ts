@@ -3,8 +3,17 @@ import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
 
+import { FileService } from "./services/fileService";
+import { ComponentFileService } from "./services/componentFileService";
+import { InputBoxService } from "./services/inputBoxService";
+import { ComponentDto } from "./interfaces/templates/ComponentDto";
+
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand(
+  const fileService = new FileService(context.extensionPath);
+  const componentFileService = new ComponentFileService(fileService);
+  const inputBoxService = new InputBoxService();
+
+  const disposable = vscode.commands.registerCommand(
     "blazorcomponents.createComponent",
     async (event) => {
       var dirpath: string = event.fsPath;
@@ -23,11 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
         namespace = namespace.split(".").splice(-1)[0];
       }
 
-      var componentName = await vscode.window.showInputBox({
-        placeHolder: "Component",
-        ignoreFocusOut: true,
-        prompt: "Please enter a component name",
-      });
+      var componentName = await inputBoxService.GetComponentName();
 
       if (componentName === undefined) {
         return;
@@ -36,43 +41,15 @@ export function activate(context: vscode.ExtensionContext) {
       componentName =
         componentName.charAt(0).toUpperCase() + componentName.substring(1);
 
-      try {
-        var componentBaseText = await GetTemplateFileAsync("ComponentBase", {
-          ClassName: componentName,
-          Namespace: namespace,
-        });
-        fs.writeFileSync(
-          `${dirpath}/${componentName}.razor.cs`,
-          componentBaseText
-        );
+      var componentDto: ComponentDto = {
+        ComponentName: componentName,
+        Namespace: namespace,
+      };
 
-        var componentText = await GetTemplateFileAsync("Component", {
-          ComponentName: componentName,
-        });
-        fs.writeFileSync(`${dirpath}/${componentName}.razor`, componentText);
-      } catch (e) {
-        console.log(e);
-      }
+      componentFileService.CreateClassComponent(dirpath, componentDto);
+      componentFileService.CreateRazorComponent(dirpath, componentDto);
     }
   );
-
-  async function GetTemplateFileAsync(templateName: string, args: any) {
-    var template = await vscode.workspace.openTextDocument(
-      context.extensionPath + "/templates/" + templateName
-    );
-    var templateText = template.getText();
-    return StringReplacer(templateText, args);
-  }
-
-  function StringReplacer(str: string, args: any): string {
-    for (var key in args) {
-      var value = args[key];
-      var templateKey = "%" + key + "%";
-      var str = str.replace(templateKey, value);
-    }
-
-    return str;
-  }
 
   context.subscriptions.push(disposable);
 }

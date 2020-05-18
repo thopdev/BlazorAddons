@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components;
-
 namespace %Namespace%
 {
     public partial class %ClassName%Component
