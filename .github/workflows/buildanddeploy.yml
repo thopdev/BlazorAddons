@@ -21,3 +21,7 @@ jobs:
 #     Disabled until test are added 
 #     - name: Npm test
 #       run: npm test  
+    - name: VSC Package
+      run: vsce package
+    - name: VSC Publish
+      run: vsce publish --packagePath "$(System.DefaultWorkingDirectory)/_BlazorComponents/extension/blazorcomponents-0.0.$(Build.BuildId).vsix" -p ${{ secrets.VSCE_TOKEN }}  
