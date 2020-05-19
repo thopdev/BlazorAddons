@@ -2,6 +2,8 @@
 This visual studio code plugin give additional features for your blazor project. 
 
 ![Github Actions](https://img.shields.io/github/workflow/status/hopstar/BlazorAddons/GithubActions.svg?logo=github) 
+![Install Visual Studio Code](https://img.shields.io/badge/Install-Visual_Studio_Code-Blue?url=https://marketplace.visualstudio.com/vscode:extension/tHop.blazoraddons)
+![Install Visual Studio Code](https://img.shields.io/badge/Page-Visual_Studio_Code-Blue)
 
 ## Features
  - Create Blazor Component - Partial class and razor
