@@ -5,6 +5,7 @@
   "version": "0.3.0",
   "publisher": "tHop",
   "type": "git",
+  "icon": "resources/images/Blazor.png",
   "repository": "https://github.com/hopstar/BlazorAddons",
   "engines": {
     "vscode": "^1.37.0"
