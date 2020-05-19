@@ -14,7 +14,8 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v1.4.2
     - name: Npm install
-      run: npm install
+      run: npm install |
+        npm install -g vsce
     - name: Npm Build
       run: npm build
 #     Disabled until test are added 
