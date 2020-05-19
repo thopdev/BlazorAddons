@@ -1,7 +1,13 @@
 # Blazor Addons
 This visual studio code plugin give additional features for your blazor project. 
 
+- [GitHub page](https://github.com/hopstar/BlazorAddons)
+- [Visual Studio Code Extension Marketplace](https://marketplace.visualstudio.com/items?itemName=tHop.blazoraddons)
+- [Install](vscode:extension/tHop.blazoraddons)
+
+
 ![Github Actions](https://img.shields.io/github/workflow/status/hopstar/BlazorAddons/GithubActions.svg?logo=github) 
+
 
 ## Features
  - Create Blazor Component - Partial class and razor
