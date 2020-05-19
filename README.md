@@ -1,7 +1,7 @@
 # Blazor Addons
 This visual studio code plugin give additional features for your blazor project. 
 
-![Github Actions](https://github.com/hopstar/BlazorAddons/workflows/Github%20Actions/badge.svg) 
+![Github Actions](https://img.shields.io/github/workflow/status/hopstar/BlazorAddons/workflows/Github%20Actions/badge.svg) 
 
 ## Features
  - Create Blazor Component - Partial class and razor
